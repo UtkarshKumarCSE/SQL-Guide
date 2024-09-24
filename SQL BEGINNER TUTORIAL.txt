@@ -1,0 +1,112 @@
+SQL BEGINNER TUTORIAL
+
+
+# (Create a database where u will be storing all your data)
+CREATE DATABSE O;
+USE O;
+
+# (Now we will be creating a table named students using simple SQL commands)
+
+ Create Table Students
+    -> (
+    -> id int primary key,
+    -> Name varchar(20),
+    -> Class varchar(20)
+    -> );
+Query OK, 0 rows affected (0.03 sec)            # THIS WILL YOUR OUTUT
+
+
+#(DESC is used to describe your table's framework)
+
+mysql> desc students;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| Name  | varchar(20) | YES  |     | NULL    |       |
+| Class | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+
+# INSERTING VALUES INTO TABLE
+
+ INSERT INTO students VALUES
+    -> (12,"Rohan Das","CSE10")
+    -> (21,'Utkrsh','CSE12')
+    -> (55,"hariom tiwari","CSE5");
+
+Query OK, 1 row affected (0.00 sec)
+
+# ALL THE VALUES HAS BEEN INSERTED 
+
+select * from students;                  ( USE THIS LINE TO DISPLAY THE TABLE )
++----+---------------+-------+
+| id | Name          | Class |
++----+---------------+-------+
+| 12 | Rohan Das     | CSE10 |
+| 21 | Utkrsh        | CSE12 |
+| 55 | hariom tiwari | CSE5  |
++----+---------------+-------+
+3 rows in set (0.00 sec)
+
+#(Now for changing the values you can use "where" command as well)
+
+SELCET * FROM id WHERE id = 12;
++----+-----------+-------+
+| id | Name      | Class |
++----+-----------+-------+
+| 12 | Rohan Das | CSE10 |
++----+-----------+-------+
+
+#(Using order by functions as it helps us to arrange the data in ascending order)
+
+mysql> select * from students order by id;
++----+---------------+-------+
+| id | Name          | Class |
++----+---------------+-------+
+| 12 | Rohan Das     | CSE10 |
+| 21 | Utkrsh        | CSE12 |
+| 55 | hariom tiwari | CSE5  |
++----+---------------+-------+
+3 rows in set (0.00 sec)
+
+#(One of the most important functions used in SQL is UPDATE it helps us to change any data with the help of WHERE clause)
+
+mysql> Update students
+    -> set Name = 'vedant',Class = "CSE-14"
+    -> where id =12;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+AGAIN USING SELECT * CMD FOR DISPALYING THE TABLE
+
+mysql> select * from students;
++----+---------------+--------+
+| id | Name          | Class  |
++----+---------------+--------+
+| 12 | vedant        | CSE-14 |
+| 21 | Utkrsh        | CSE12  |
+| 55 | hariom tiwari | CSE5   |
++----+---------------+--------+
+3 rows in set (0.00 sec)
+
+
+The ALTER TABLE statement is used to add, delete, or modify columns in an existing table.
+
+mysql> Alter Table students
+    -> add Makrs int;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+#(AGAIN DESCRIBING THE TABLE)
+mysql> desc students;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| Name  | varchar(20) | YES  |     | NULL    |       |
+| Class | varchar(20) | YES  |     | NULL    |       |
+| Makrs | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
